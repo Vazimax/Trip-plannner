@@ -3,11 +3,13 @@ import { Button } from '../ui/button'
 
 function Header() {
   return (
-    <div className='p-2 shadow-sm items-center'>
-      <img src='/logo.svg'></img>
-      <div>
-        <Button>Sign In</Button>
-      </div>
+    <div className=' items-center'>
+      <img className='max-w-xs' src='/logo.svg'></img>
+      <Button className='text-right'>Sign In</Button>
+      <br />
+      <br />
+      <hr />
+      <br />
     </div>
   )
 }

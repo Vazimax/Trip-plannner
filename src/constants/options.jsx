@@ -35,3 +35,5 @@ export const SelectBudgetList = [
         title:'Luxury',
     }
 ]
+
+export const Prompt = "Generate Travel plan for {location}, for {days} days, for {people} with a {budget} budget. Give me Hotels option list with Hotel name, hotel image url, price, rating, description and suggest an itinerary with place name, place details, place image ulr, geo coorinates, ticket pricing, time to travel to each location for {days} days with each day with best time to visit in JSON format."

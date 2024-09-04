@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dialog"
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';  // Make sure axios is imported
+import { db } from '@/service/FirebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
 
 function CreateTrip() {
   const [place, setPlace] = useState(null);
@@ -81,7 +83,19 @@ function CreateTrip() {
     const result = await chatSession.sendMessage(final_prompt);
     const responseText = await result?.response?.text();
     console.log(responseText);
+    SaveAITrip(responseText)
   };
+
+  const SaveAITrip=async(TripData)=>{
+    const user = JSON.parse(localStorage.getItem('user'));
+    const docID = Date.now().toString()
+    await setDoc(doc(db,"AITrips",docID),{
+      userChoice:formData,
+      tripData:TripData,
+      userEmail:user?.email,
+      id:docID
+    });
+  }
 
   return (
     <div className='sm:px-10 md:px-30 px-5 mt-5'>
